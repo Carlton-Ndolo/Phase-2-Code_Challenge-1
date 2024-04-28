@@ -27,7 +27,7 @@ You use git clone to be able to download the documents in the GitHub.
 
 1.
 ```
- Git clone  git@github.com:Carlton-Ndolo
+ Git clone  git@github.com:Carlton-Ndolo/Phase-2-Code_Challenge-1.git
 
 ```
 or by downloading a ZIP file of the code.
