@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Form from './componenets/Form';
+import SearchBar from './componenets/SearchBar';
+import Table from './componenets/Table';
 import './App.css';
 
 function App() {
+    // Define state variables using useState hook
+  const [transactions, setTransactions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+   // useEffect hook to fetch data when component mounts
+  useEffect(() => {
+  // Fetch transactions data from the server
+    fetch('http://localhost:3000/transactions')
+      .then(response => response.json())
+      .then(data => setTransactions(data))// Set transactions state with fetched data
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); 
+// Function to add a new transaction
+  const addTransaction = (newTransaction) => {
+    setTransactions([...transactions, newTransaction]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1 className='starter'>The Royal Bank Of Flatiron</h1>
       </header>
+      <div className="content">
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Form addTransaction={addTransaction} />
+        <Table transactions={transactions} searchTerm={searchTerm} />
+      </div>
     </div>
   );
 }
