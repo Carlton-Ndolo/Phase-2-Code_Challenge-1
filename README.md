@@ -51,9 +51,6 @@ json-server --watch db.json
 
 
 
-# Live Link
-
-[Git]( https://carlton-ndolo.github.io/JS-Week-3-Code-Challenge/)
 
 ## Technologies used
 
